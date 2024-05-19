@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transactions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin-bottom: 2em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Transactions</h1>
+  <form method="post">
+    <label for="sender">Sender:</label><br>
+    <input type="text" id="sender" name="sender"><br>
+    <label for="recipient">Recipient:</label><br>
+    <input type="text" id="recipient" name="recipient"><br>
+    <label for="amount">Amount:</label><br>
+    <input type="number" step="0.01" id="amount" name="amount"><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table>
+    <tr>
+      <th>Sender</th>
+      <th>Recipient</th>
+      <th>Amount</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{ transaction.sender }}</td>
+      <td>{{ transaction.recipient }}</td>
+      <td>{{ transaction.amount }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subscriptions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin-bottom: 2em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Subscriptions</h1>
+  <form method="post">
+    <label for="user_id">User ID:</label><br>
+    <input type="text" id="user_id" name="user_id"><br>
+    <label for="plan">Plan:</label><br>
+    <input type="text" id="plan" name="plan"><br>
+    <label for="amount">Amount:</label><br>
+    <input type="number" step="0.01" id="amount" name="amount"><br>
+    <label for="interval_days">Interval Days:</label><br>
+    <input type="number" id="interval_days" name="interval_days"><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table>
+    <tr>
+      <th>User ID</th>
+      <th>Plan</th>
+      <th>Amount</th>
+      <th>Next payment date</th>
+    </tr>
+    {% for subscription in subscriptions %}
+    <tr>
+      <td>{{ subscription.user_id }}</td>
+      <td>{{ subscription.plan }}</td>
+      <td>{{ subscription.amount }}</td>
+      <td>{{ subscription.next_payment_date }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
